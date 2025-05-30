@@ -17,6 +17,9 @@
         <br>
         <label for="">Quantidade de dados</label>
         <input type="number" name="" id="qtdDados">
+        <br>
+        <label for="">Numero minimo</label>
+        <input type="number" name="" id="numMinimo">
     </form>
     
     <button onclick="funcao()">Jogar dados</button>
@@ -27,11 +30,12 @@
         function funcao() {
             const numLados = Number(document.getElementById("numLados").value);
             const qtdDados = Number(document.getElementById("qtdDados").value);
+            const numMinimo = Number(document.getElementById("numMinimo").value);
 
             let resultados = [];
             for (let i = 0; i < qtdDados; i++) {
-                let num = 1;
-                while (num == 1) {
+                let num = numMinimo;
+                while (num == numMinimo) {
                     num = Math.floor(Math.random() * (numLados)) + 1;
                 }
                 resultados.push(num);
