@@ -12,22 +12,32 @@
 </head>
 <body>
     <form action="">
-        <label for="">Número de lados do dado</label>
-        <input type="number" name="" id="numLados">
+        <div id="pergunta1">
+            <label for="">Número de lados do dado</label>
+            <input type="number" name="" id="numLados" oninput="addInput(this.id)">
+        </div>
+
         <br>
-        <label for="">Quantidade de dados</label>
-        <input type="number" name="" id="qtdDados">
+
+        <div id="pergunta2">
+            <label for="">Quantidade de dados</label>
+            <input type="number" name="" id="qtdDados" oninput="addInput(this.id)">
+        </div>
+
         <br>
-        <label for="">Numero minimo</label>
-        <input type="number" name="" id="numMinimo">
+
+        <div id="pergunta3">
+            <label for="">Número a tirar das rolagens</label>
+            <input type="number" name="" id="numMinimo">
+        </div>
     </form>
     
-    <button onclick="funcao()">Jogar dados</button>
+    <button onclick="rolarDados()">Jogar dados</button>
 
     <div id="resultado"></div>
 
     <script>
-        function funcao() {
+        function rolarDados() {
             const numLados = Number(document.getElementById("numLados").value);
             const qtdDados = Number(document.getElementById("qtdDados").value);
             const numMinimo = Number(document.getElementById("numMinimo").value);
@@ -42,6 +52,10 @@
             }
 
             document.getElementById("resultado").innerHTML = `Resultados: ${resultados.join(", ")} <br> Soma: ${resultados.reduce((a, b) => a + b, 0)}`;
+        }
+
+        function addInput(ide) {
+            document.getElementById(ide).innerHTML += `<input type="number" name="" id="numLados" onchange="addInput(${ide})"`
         }
     </script>
 </body>
