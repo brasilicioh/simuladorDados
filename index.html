@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">Número de lados do dado</label>
+        <input type="number" name="" id="numLados">
+        <br>
+        <label for="">Quantidade de dados</label>
+        <input type="number" name="" id="qtdDados">
+    </form>
+    
+    <button onclick="funcao()">Jogar dados</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function funcao() {
+            const numLados = Number(document.getElementById("numLados").value);
+            const qtdDados = Number(document.getElementById("qtdDados").value);
+
+            let resultados = [];
+            for (let i = 0; i < qtdDados; i++) {
+                let num = 1;
+                while (num == 1) {
+                    num = Math.floor(Math.random() * (numLados)) + 1;
+                }
+                resultados.push(num);
+            }
+
+            document.getElementById("resultado").innerHTML = `Resultados: ${resultados.join(", ")} <br> Soma: ${resultados.reduce((a, b) => a + b, 0)}`;
+        }
+    </script>
+</body>
+</html>
