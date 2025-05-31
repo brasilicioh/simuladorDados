@@ -4,59 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dados</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
-<body>
-    <form action="">
-        <div id="pergunta1">
-            <label for="">Número de lados do dado</label>
-            <input type="number" name="" id="numLados" oninput="addInput(this.id)">
-        </div>
+<body id="rolagens">
+    <h4>Esse código foi feito para girar dados. O resultado são números aleatórios entre 1 e o número de lados do dado.
+        Mas é imposspivel cair 1.</h4>
+    <button type="button" class="btn btn-primary" onclick="addDado()">Adcionar dado</button>
+    <br>
 
-        <br>
-
-        <div id="pergunta2">
-            <label for="">Quantidade de dados</label>
-            <input type="number" name="" id="qtdDados" oninput="addInput(this.id)">
-        </div>
-
-        <br>
-
-        <div id="pergunta3">
-            <label for="">Número a tirar das rolagens</label>
-            <input type="number" name="" id="numMinimo">
-        </div>
-    </form>
-    
-    <button onclick="rolarDados()">Jogar dados</button>
-
-    <div id="resultado"></div>
-
-    <script>
-        function rolarDados() {
-            const numLados = Number(document.getElementById("numLados").value);
-            const qtdDados = Number(document.getElementById("qtdDados").value);
-            const numMinimo = Number(document.getElementById("numMinimo").value);
-
-            let resultados = [];
-            for (let i = 0; i < qtdDados; i++) {
-                let num = numMinimo;
-                while (num == numMinimo) {
-                    num = Math.floor(Math.random() * (numLados)) + 1;
-                }
-                resultados.push(num);
-            }
-
-            document.getElementById("resultado").innerHTML = `Resultados: ${resultados.join(", ")} <br> Soma: ${resultados.reduce((a, b) => a + b, 0)}`;
-        }
-
-        function addInput(ide) {
-            document.getElementById(ide).innerHTML += `<input type="number" name="" id="numLados" onchange="addInput(${ide})"`
-        }
-    </script>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
 </body>
 </html>
