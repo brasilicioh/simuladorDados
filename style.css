@@ -3,3 +3,7 @@ body {
     padding: 6em;
     padding-top: 0.5em;
 }
+
+div {
+    text-align: center;
+}
