@@ -69,5 +69,5 @@ function rolarDados(id) {
 }
 
 function mudarTema() {
-    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle("dark-mode");
 }
