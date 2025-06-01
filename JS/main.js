@@ -2,11 +2,18 @@ let count = 0;
 
 function addDado() {
     document.getElementById("rolagens").innerHTML += `<br>
-    <div class="input-group mb-3">
+    <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Número a ser removido</span>
         </div>
         <input placeholder="Opcional" id="numRetirado${count}" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Modificação</span>
+        </div>
+        <input id="modificacaoTotal${count}" type="number" aria-label="Default" class="form-control" placeholder="Opcional... buff na soma total">
+        <input id="modificacaoIndividual${count}" type="number" aria-label="Default" class="form-control" placeholder="Opcional... buff em cada dado">
     </div>
     <div class="input-group">
         <div class="input-group-prepend">
@@ -14,17 +21,11 @@ function addDado() {
         </div>
         <input id="numLados${count}" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
     </div>
-    <div class="input-group">
+    <div class="input-group mb-2">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Qtd de Dados</span>
         </div>
         <input id="qtdDados${count}" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-    </div>
-    <div class="input-group mb-1">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Modificações na soma total</span>
-        </div>
-        <input placeholder="Opcional" id="modificacao${count}" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
     </div>
     <button type="button" class="btn btn-secondary" id="${count}" onclick="rolarDados(this.id)">Jogar dados</button>
     <div id="div${count}"></div>
@@ -36,7 +37,8 @@ function addDado() {
 function rolarDados(id) {
     const numLados = Number(document.getElementById(`numLados${id}`).value);
     const qtdDados = Number(document.getElementById(`qtdDados${id}`).value);
-    const modificacao = Number(document.getElementById(`modificacao${id}`).value);
+    const modificacaoAll = Number(document.getElementById(`modificacaoTotal${id}`).value);
+    const modificacaoInd = Number(document.getElementById(`modificacaoIndividual${id}`).value);
 
     const numRetirado = Number(document.getElementById(`numRetirado${id}`).value);
 
@@ -60,10 +62,10 @@ function rolarDados(id) {
         while (num == numRetirado) {
             num = Math.floor(Math.random() * numLados) + 1;
         }
-        resultados.push(num);
+        resultados.push(num + modificacaoInd);
     }
 
-    let somaArray = resultados.reduce((a, b) => a + b, 0) + modificacao;
+    let somaArray = resultados.reduce((a, b) => a + b, 0) + modificacaoAll;
 
     document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${resultados.join(", ")} <br> Soma: ${somaArray}</h5>`;
 }
