@@ -10,7 +10,7 @@ function addDado() {
             <input id="numRetirado" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>`;
     }
-    document.getElementById("rolagens").innerHTML += `<br>  
+    document.getElementById("rolagens").innerHTML += `<div id="botoesDados"><br>  
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Lados do Dado</span>
@@ -25,7 +25,7 @@ function addDado() {
     </div>
     <button type="button" class="btn btn-secondary" id="${count}" onclick="rolarDados(this.id)">Jogar dados</button>
     <div id="div${count}"></div>
-    <br>`;
+    <br></div>`;
 
     count += 1;
 }
@@ -62,4 +62,8 @@ function rolarDados(id) {
     let somaArray = resultados.reduce((a, b) => a + b, 0);
 
     document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${resultados.join(", ")} <br> Soma: ${somaArray}</h5>`;
+}
+
+function mudarTema() {
+    document.body.classList.toggle('dark-mode');
 }
