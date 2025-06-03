@@ -23,3 +23,8 @@ body.dark-mode {
 div {
     text-align: center;
 }
+
+#imageSound {
+    width: auto;
+    height: auto;
+}
