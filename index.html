@@ -9,26 +9,41 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <button type="button" class="btn btn-dark" onclick="mudarTema()">Mudar Tema</button>
-    <button type="button" class="btn btn-dark" onclick="document.getElementById('rolagens').innerHTML = ''">Limpar Página</button>
-    <div>
-        <h1>Girar dados</h1>
-        <h4>Os resultados são números aleatórios entre 1 e o número de Lados do Dado.<br>Ele joga o dado pela Qtd escolhida e soma os resultados.</h4>
-        <button type="button" class="btn btn-primary" onclick="addDado()">Adcionar dado</button>
+    <section id="body">
+        <button type="button" class="btn btn-dark" onclick="mudarTema()">Mudar Tema</button>
+        <button type="button" class="btn btn-dark" onclick="document.getElementById('rolagens').innerHTML = ''">Limpar Página</button>
+        <div class="infoDados">
+            <h1>Girar dados</h1>
+            <h4>Os resultados são números aleatórios entre 1 e o número de Lados do Dado.<br>Ele joga o dado pela Qtd escolhida e soma os resultados.</h4>
+            <button type="button" class="btn btn-primary" onclick="addDado()">Adcionar dado</button>
+        </div>
+        <div id="rolagens"></div>
+
+        <button id="configSound" type="button" class="btn btn-dark" onclick="configSom()"><img class="imageSound" src="img/som.png">Configurar sons</button>
+        <div id="tocarOSomDado"></div>
+    </section>
+
+    <div id="configuraSom" style="display: none;">
+        <label>Escolha o som ao jogar os dados</label>
+        <section>
+            <img onclick="tocarSom('sound1.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound1.mp4')">Som 1</button>
+            <img onclick="tocarSom('sound2.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound2.mp4')">Som 2</button>
+            <img onclick="tocarSom('sound3.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound3.mp4')">Som 3</button>
+            <img onclick="tocarSom('sound4.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound4.mp4')">Som 4</button>
+        </section>
+        <section>
+            <img onclick="tocarSom('sound5.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound5.mp4')">Som 5</button>
+            <img onclick="tocarSom('sound6.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound6.mp4')">Som 6</button>
+            <img onclick="tocarSom('sound7.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound7.mp4')">Som 7</button>
+            <img onclick="tocarSom('sound8.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound8.mp4')">Som 8</button>
+        </section>
+        
+        <br><button type="button" class="btn btn-primary" onclick="definirSom()">Nenhum</button>
+        <div id="tocarOSom"></div>
+
+        <br><button type="button" class="btn btn-warning" onclick="voltarNormal()">Voltar</button>
     </div>
-    <div id="rolagens"></div>
-    <label>Escolha um som ao girar dados</label>
-    <select id="select-sound">
-        <option value="none" data-image="img/som.png" selected>None</option>
-        <option value="sound1" data-image="img/som.png">Som 1</option>
-        <option value="sound2" data-image="img/som.png">Som 2</option>
-        <option value="sound3" data-image="img/som.png">Som 3</option>
-        <option value="sound4" data-image="img/som.png">Som 4</option>
-        <option value="sound5" data-image="img/som.png">Som 5</option>
-        <option value="sound6" data-image="img/som.png">Som 6</option>
-        <option value="sound7" data-image="img/som.png">Som 7</option>
-        <option value="sound8" data-image="img/som.png">Som 8</option>
-    </select>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

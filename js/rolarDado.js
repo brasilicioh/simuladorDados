@@ -32,4 +32,6 @@ function rolarDados(id) {
     let somaArray = resultados.reduce((a, b) => a + b, 0) + modificacaoAll;
 
     document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${resultados.join(", ")} <br> Soma: ${somaArray}</h5>`;
+
+    document.getElementById("audioDado").play();
 }
