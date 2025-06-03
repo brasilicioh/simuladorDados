@@ -1,11 +1,11 @@
-function configSom() {
-    document.getElementById("body").style.display = "none";
-    document.getElementById("configuraSom").style.display = "";
-}
-
-function voltarNormal() {
-    document.getElementById("body").style.display = "";
-    document.getElementById("configuraSom").style.display = "none";
+function configSom(id) {
+    if (id == "configurar") {
+        document.getElementById("body").style.display = "none";
+        document.getElementById("configuraSom").style.display = "";
+    } else if (id == "voltar") {
+        document.getElementById("body").style.display = "";
+        document.getElementById("configuraSom").style.display = "none";
+    }
 }
 
 function tocarSom(nomeSom) {

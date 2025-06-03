@@ -9,7 +9,7 @@
 </head>
 <body>
     <section id="body">
-        <button type="button" class="btn btn-dark" onclick="mudarTema()">Mudar Tema</button>
+        <button type="button" class="btn btn-dark" onclick="document.body.classList.toggle('dark-mode')">Mudar Tema</button>
         <button type="button" class="btn btn-dark" onclick="document.getElementById('rolagens').innerHTML = ''">Limpar Página</button>
         <div class="infoDados">
             <h1>Girar dados</h1>
@@ -18,7 +18,7 @@
         </div>
         <div id="rolagens"></div>
 
-        <button id="configSound" type="button" class="btn btn-dark" onclick="configSom()"><img class="imageSound" src="img/som.png">Configurar sons</button>
+        <button id="configurar" type="button" class="btn btn-dark" onclick="configSom(this.id)"><img class="imageSound" src="img/som.png">Configurar sons</button>
         <div id="tocarOSomDado"></div>
     </section>
 
@@ -44,7 +44,7 @@
         <br><button type="button" class="btn btn-primary" onclick="definirSom()">Nenhum</button>
         <div id="tocarOSom"></div>
 
-        <br><button type="button" class="btn btn-warning" onclick="voltarNormal()">Voltar</button>
+        <br><button id="voltar" type="button" class="btn btn-warning" onclick="configSom(this.id)">Voltar</button>
     </div>
 
 
