@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <button type="button" class="btn btn-dark" onclick="document.body.classList.toggle('dark-mode')">Mudar Tema</button>
+    <button type="button" class="btn btn-dark" onclick="document.getElementById('rolagens').innerHTML = ''">Limpar Página</button>
     <section id="body">
-        <button type="button" class="btn btn-dark" onclick="document.body.classList.toggle('dark-mode')">Mudar Tema</button>
-        <button type="button" class="btn btn-dark" onclick="document.getElementById('rolagens').innerHTML = ''">Limpar Página</button>
         <div class="infoDados">
             <h1>Girar dados</h1>
             <h4>Os resultados são números aleatórios entre 1 e o número de Lados do Dado.<br>Ele joga o dado pela Qtd escolhida e soma os resultados.</h4>
