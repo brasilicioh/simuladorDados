@@ -30,3 +30,11 @@ div {
     height: 1.4em;
     cursor: pointer;
 }
+
+section.sons {
+    padding: 0.5em;
+
+    span {
+        padding: 0.5em;
+    }
+}
