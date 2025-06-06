@@ -7,7 +7,7 @@ function rolarDados(id) {
     const numRetirado = Number(document.getElementById(`numRetirado${id}`).value);
 
     if ((numLados == "" || numLados <= 1) || (qtdDados == "" || qtdDados < 1) || (numLados > 2**100 || qtdDados > 2**100)) {
-        document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: Error <br> Soma: Error</h5>`;
+        document.getElementById(`div${id}`).innerHTML = ``;
         if (numLados == "" || qtdDados == "") {
             alert("Um dos campos está vazio");
         } else if (numLados <= 1) {
@@ -31,7 +31,17 @@ function rolarDados(id) {
 
     let somaArray = resultados.reduce((a, b) => a + b, 0) + modificacaoAll;
 
-    document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${resultados.join(", ")} <br> Soma: ${somaArray}</h5>`;
+    const saida = resultados.map(num => {
+        if (num == 1 + modificacaoInd) {
+            return `<span style="color: red">${num}</span>`;
+        } else if (num == numLados + modificacaoInd) {
+            return `<span style="color: green">${num}</span>`;
+        } else {
+            return num;
+        }
+    });
+
+    document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${saida.join(", ")} <br> Soma: ${somaArray}</h5>`;
 
     document.getElementById("audioDado").play();
 }

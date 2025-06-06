@@ -31,5 +31,9 @@ function addDado() {
     <div id="div${count}"></div>
     <br>`;
 
+    if (count == 0) {
+        document.getElementById("legenda").style.display = "";
+    }
+
     count += 1;
 }
