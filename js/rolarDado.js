@@ -20,7 +20,7 @@ function rolarDados(id) {
         return;
     }
 
-    let resultados = [];
+    const resultados = [];
     for (let i = 0; i < qtdDados; i++) {
         let num = Math.floor(Math.random() * numLados) + 1;
         while (num == numRetirado) {
@@ -29,7 +29,7 @@ function rolarDados(id) {
         resultados.push(num + modificacaoInd);
     }
 
-    let somaArray = resultados.reduce((a, b) => a + b, 0) + modificacaoAll;
+    const somaArray = resultados.reduce((a, b) => a + b, 0) + modificacaoAll;
 
     const saida = resultados.map(num => {
         if (num == 1 + modificacaoInd) {

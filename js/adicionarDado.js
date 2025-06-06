@@ -35,5 +35,5 @@ function addDado() {
         document.getElementById("legenda").style.display = "";
     }
 
-    count += 1;
+    count++;
 }
