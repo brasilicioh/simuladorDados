@@ -9,7 +9,7 @@ body.dark-mode {
     background-color: black;
     color: white;
 
-    input, input:focus, span {
+    input, input:focus, span.question {
         background-color: rgb(44, 44, 44);
         border-color: rgb(107, 107, 107);
         color: white;

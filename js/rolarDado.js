@@ -42,6 +42,8 @@ function rolarDados(id) {
     });
 
     document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${saida.join(", ")} <br> Soma: ${somaArray}</h5>`;
-
-    document.getElementById("audioDado").play();
+    
+    const audioSom = document.getElementById("audioDado");
+    audioSom.currentTime = 0;
+    audioSom.play();
 }
