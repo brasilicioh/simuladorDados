@@ -1,3 +1,6 @@
+const allArrays = [];
+var somaAllArrays;
+
 function rolarDados(id) {
     const numLados = Number(document.getElementById(`numLados${id}`).value);
     const qtdDados = Number(document.getElementById(`qtdDados${id}`).value);
@@ -8,6 +11,9 @@ function rolarDados(id) {
 
     if ((numLados == "" || numLados <= 1) || (qtdDados == "" || qtdDados < 1) || (numLados > 2**100 || qtdDados > 2**100)) {
         document.getElementById(`div${id}`).innerHTML = ``;
+        allArrays[id] = 0;
+        somaAllArrays = allArrays.reduce((a, b) => a + b, 0);
+        document.getElementById("somaAllDados").innerText = `Soma todos dados atuais: ${somaAllArrays}`;
         if (numLados == "" || qtdDados == "") {
             alert("Um dos campos está vazio");
         } else if (numLados <= 1) {
@@ -30,6 +36,8 @@ function rolarDados(id) {
     }
 
     const somaArray = resultados.reduce((a, b) => a + b, 0) + modificacaoAll;
+    allArrays.splice(Number(id), 1, somaArray);
+    somaAllArrays = allArrays.reduce((a, b) => a + b, 0);
 
     const saida = resultados.map(num => {
         if (num == 1 + modificacaoInd) {
@@ -42,6 +50,7 @@ function rolarDados(id) {
     });
 
     document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${saida.join(", ")} <br> Soma: ${somaArray}</h5>`;
+    document.getElementById("somaAllDados").innerText = `Soma todos dados atuais: ${somaAllArrays}`;
     
     const audioSom = document.getElementById("audioDado");
     audioSom.currentTime = 0;

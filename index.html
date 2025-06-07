@@ -9,7 +9,7 @@
 </head>
 <body>
     <button type="button" class="btn btn-dark" onclick="document.body.classList.toggle('dark-mode')">Mudar Tema</button>
-    <button type="button" class="btn btn-dark" onclick="document.getElementById('rolagens').innerHTML = ''; document.getElementById('legenda').style.display = 'none';">Limpar Página</button>
+    <button type="button" class="btn btn-dark" onclick="limparTela()">Limpar Página</button>
     <section id="body">
         <div class="infoDados">
             <h1>Girar dados</h1>
@@ -18,8 +18,11 @@
         </div>
         <div id="rolagens"></div>
 
-        <div id="legenda" style="display: none;"><p><span style="color: green;">Número verde -> número máximo do dado</span><br>
-        <span style="color: red;">Número vermelho -> número mínimo do dado</span></p></div>
+        <div id="legenda" style="display: none;">
+            <h5 id="somaAllDados"></h5>
+            <p><span style="color: green;">Número verde -> número máximo do dado</span><br>
+            <span style="color: red;">Número vermelho -> número mínimo do dado</span></p>
+        </div>
 
         <button id="configurar" type="button" class="btn btn-dark" onclick="configSom(this.id)"><img class="imageSound" src="img/som.png">Configurar sons</button>
         <div id="tocarOSomDado"></div>
@@ -42,6 +45,7 @@
         <section class="sons">
             <span id="botoesSom"><img onclick="tocarSom('sound9.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound9.mp4')">Som 9</button></span>
             <span id="botoesSom"><img onclick="tocarSom('sound10.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound10.mp4')">Som 10</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound11.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound11.mp4')">Som 11</button></span>
         </section>
 
         
@@ -59,5 +63,6 @@
     <script src="js/rolarDado.js"></script>
     <script src="js/alterarTema.js"></script>
     <script src="js/som.js"></script>
+    <script src="js/limparDado.js"></script>
 </body>
 </html>
