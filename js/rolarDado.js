@@ -50,6 +50,7 @@ function rolarDados(id) {
     });
 
     document.getElementById(`div${id}`).innerHTML = `<h5>Resultados: ${saida.join(", ")} <br> Soma: ${somaArray}</h5>`;
+    document.getElementById("somaAllDados").style.display = "";
     document.getElementById("somaAllDados").innerText = `Soma todos dados atuais: ${somaAllArrays}`;
     
     const audioSom = document.getElementById("audioDado");

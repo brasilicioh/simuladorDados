@@ -1,6 +1,6 @@
 var count = 0;
 
-function addDado() {
+document.querySelector('.btnAddDado').addEventListener('click', () => {
     document.getElementById("rolagens").innerHTML += `<br>
     <div class="input-group">
         <div class="input-group-prepend">
@@ -34,4 +34,4 @@ function addDado() {
     document.getElementById("legenda").style.display = "";
 
     count++;
-}
+})

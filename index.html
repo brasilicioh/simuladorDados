@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <button type="button" class="btn btn-dark" onclick="document.body.classList.toggle('dark-mode')">Mudar Tema</button>
-    <button type="button" class="btn btn-dark" onclick="limparTela()">Limpar Página</button>
+    <button type="button" class="btn btn-dark btnTemaEscuro">Mudar Tema</button>
+    <button type="button" class="btn btn-dark btnLimparTela">Limpar Página</button>
     <section id="body">
         <div class="infoDados">
             <h1>Girar dados</h1>
             <h4>Os resultados são números aleatórios entre 1 e o número de Lados do Dado.<br>Ele joga o dado pela Qtd escolhida e soma os resultados.</h4>
-            <button type="button" class="btn btn-primary" onclick="addDado()">Adicionar dado</button>
+            <button type="button" class="btn btn-primary btnAddDado">Adicionar dado</button>
         </div>
         <div id="rolagens"></div>
 
@@ -24,36 +24,36 @@
             <span style="color: red;">Número vermelho -> número mínimo do dado</span></p>
         </div>
 
-        <button id="configurar" type="button" class="btn btn-dark" onclick="configSom(this.id)"><img class="imageSound" src="img/som.png">Configurar sons</button>
+        <button id="configurar" type="button" class="btn btn-dark" onclick="configSom(this.id)"><img class="imageSounde" src="img/somBranco.png">Configurar sons</button>
         <div id="tocarOSomDado"></div>
     </section>
 
     <div id="configuraSom" style="display: none;">
         <h3>Escolha o som ao jogar os dados</h3>
         <section class="sons">
-            <span id="botoesSom"><img onclick="tocarSom('sound1.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound1.mp4')">Som 1</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound2.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound2.mp4')">Som 2</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound3.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound3.mp4')">Som 3</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound4.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound4.mp4')">Som 4</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound1.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound1.mp4')">Som 1</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound2.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound2.mp4')">Som 2</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound3.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound3.mp4')">Som 3</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound4.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound4.mp4')">Som 4</button></span>
         </section>
         <section class="sons">
-            <span id="botoesSom"><img onclick="tocarSom('sound5.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound5.mp4')">Som 5</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound6.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound6.mp4')">Som 6</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound7.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound7.mp4')">Som 7</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound8.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound8.mp4')">Som 8</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound5.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound5.mp4')">Som 5</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound6.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound6.mp4')">Som 6</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound7.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound7.mp4')">Som 7</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound8.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound8.mp4')">Som 8</button></span>
         </section>
         <section class="sons">
-            <span id="botoesSom"><img onclick="tocarSom('sound9.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound9.mp4')">Som 9</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound10.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound10.mp4')">Som 10</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound11.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound11.mp4')">Som 11</button></span>
-            <span id="botoesSom"><img onclick="tocarSom('sound12.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound12.mp4')">Som 12</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound9.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound9.mp4')">Som 9</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound10.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound10.mp4')">Som 10</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound11.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound11.mp4')">Som 11</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound12.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound12.mp4')">Som 12</button></span>
         </section>
         <section class="sons">
-            <span id="botoesSom"><img onclick="tocarSom('sound13.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary" onclick="definirSom('sound13.mp4')">Som 13</button></span>
+            <span id="botoesSom"><img onclick="tocarSom('sound13.mp4')" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom" onclick="definirSom('sound13.mp4')">Som 13</button></span>
         </section>
 
         
-        <br><button type="button" class="btn btn-primary" onclick="definirSom()">Nenhum</button>
+        <br><button type="button" class="btn btn-primary definirSom" onclick="definirSom()">Nenhum</button>
         <div id="tocarOSom"></div>
 
         <br><button id="voltar" type="button" class="btn btn-warning" onclick="configSom(this.id)">Voltar</button>
@@ -64,9 +64,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="js/adicionarDado.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/rolarDado.js"></script>
-    <script src="js/alterarTema.js"></script>
     <script src="js/som.js"></script>
-    <script src="js/limparDado.js"></script>
 </body>
 </html>
