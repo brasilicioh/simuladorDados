@@ -1,12 +1,11 @@
-function configSom(id) {
-    if (id == "configurar") {
-        document.getElementById("body").style.display = "none";
-        document.getElementById("configuraSom").style.display = "";
-    } else if (id == "voltar") {
-        document.getElementById("body").style.display = "";
-        document.getElementById("configuraSom").style.display = "none";
-    }
-}
+document.querySelector(".configurarSom").addEventListener("click", () => {
+    document.getElementById("body").style.display = "none";
+    document.getElementById("configuraSom").style.display = "";
+})
+document.querySelector(".voltarSom").addEventListener("click", () => {
+    document.getElementById("body").style.display = "";
+    document.getElementById("configuraSom").style.display = "none";
+})
 
 function tocarSom(nomeSom) {
     document.getElementById("tocarOSom").innerHTML = `<audio id="audio" src="sons/${nomeSom}"</audio>`;
