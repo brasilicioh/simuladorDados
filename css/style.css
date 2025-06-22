@@ -28,13 +28,7 @@ div {
     text-align: center;
 }
 
-.imageSound {
-    position: relative;
-    width: 1.4em;
-    height: 1.4em;
-    cursor: pointer;
-}
-.imageSounde {
+.imageSound, .imageSounde {
     position: relative;
     width: 1.4em;
     height: 1.4em;
