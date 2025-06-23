@@ -6,6 +6,7 @@ body {
     color: black;
 }
 body.dark-mode {
+    font-family: Arial, Helvetica, sans-serif;
     background-color: black;
     color: white;
 
@@ -15,7 +16,7 @@ body.dark-mode {
         color: white;
     }
 
-    section.sons  span {
+    section.sons span {
         background-color: black;
     }
 
