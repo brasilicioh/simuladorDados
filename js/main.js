@@ -64,10 +64,14 @@ document.querySelector(".btnTemaEscuro").addEventListener('click', () => {
 
 document.querySelector(".configurarSom").addEventListener("click", () => {
     document.getElementById("body").style.display = "none";
+    document.querySelector(".configurarSom").style.display = "none";
+    document.querySelector(".btnLimparTela").style.display = "none";
     document.getElementById("configuraSom").style.display = "";
 });
 document.querySelector(".voltarSom").addEventListener("click", () => {
     document.getElementById("body").style.display = "";
+    document.querySelector(".configurarSom").style.display = "";
+    document.querySelector(".btnLimparTela").style.display = "";
     document.getElementById("configuraSom").style.display = "none";
 });
 

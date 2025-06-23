@@ -8,62 +8,65 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <button type="button" class="btn btn-dark btnTemaEscuro">Mudar Tema</button>
-    <button type="button" class="btn btn-dark btnLimparTela">Limpar Página</button>
-    <section id="body">
-        <div class="infoDados">
-            <h1>Girar dados</h1>
-            <h4>Os resultados são números aleatórios entre 1 e o número de Lados do Dado.<br>Ele joga o dado pela Qtd escolhida e soma os resultados.</h4>
-            <button type="button" class="btn btn-primary btnAddDado">Adicionar dado</button>
+    <div class="container-fluid">
+        <div class="row justify-content-around mb-3">
+            <button type="button" class="btn btn-dark btnLimparTela col-2">Limpar Página</button>
+            <button type="button" class="btn btn-dark btnTemaEscuro col-2">Mudar Tema</button>
+            <button type="button" class="btn btn-dark configurarSom col-2"><img class="imageSounde" src="img/somBranco.png">Configurar sons</button>
         </div>
-        <div id="rolagens"></div>
+            <section id="body">
+                <div class="infoDados">
+                    <h1>Girar dados</h1>
+                    <h4>Os resultados são números aleatórios entre 1 e o número de Lados do Dado.<br>Ele joga o dado pela Qtd escolhida e soma os resultados.</h4>
+                    <button type="button" class="btn btn-primary btnAddDado">Adicionar dado</button>
+                </div>
+                <div id="rolagens"></div>
 
-        <div id="legenda" style="display: none;">
-            <h5 id="somaAllDados"></h5>
-            <p><span style="color: green;">Número verde -> número máximo do dado</span><br>
-            <span style="color: red;">Número vermelho -> número mínimo do dado</span></p>
-        </div>
+                <div id="legenda" style="display: none;">
+                    <h5 id="somaAllDados"></h5>
+                    <p><span style="color: green;">Número verde -> número máximo do dado</span><br>
+                    <span style="color: red;">Número vermelho -> número mínimo do dado</span></p>
+                </div>
 
-        <button type="button" class="btn btn-dark configurarSom"><img class="imageSounde" src="img/somBranco.png">Configurar sons</button>
-        <div id="tocarOSomDado"></div>
-    </section>
+                <div id="tocarOSomDado"></div>
+            </section>
 
-    <div id="configuraSom" style="display: none;">
-        <h3>Escolha o som ao jogar os dados</h3>
-        <section class="sons">
-            <span class="botoesSom" data-som="sound1.mp4"><img title="Pumm" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 1</button></span>
-            <span class="botoesSom" data-som="sound2.mp4"><img title="Tarann" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 2</button></span>
-            <span class="botoesSom" data-som="sound3.mp4"><img title="TuamTan🎵" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 3</button></span>
-            <span class="botoesSom" data-som="sound4.mp4"><img title="Ahhhh!" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 4</button></span>
-        </section>
-        <section class="sons">
-            <span class="botoesSom" data-som="sound5.mp4"><img title="Spiderman: Miguel'Ohara" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 5</button></span>
-            <span class="botoesSom" data-som="sound6.mp4"><img title="Spiderman: Gatuno" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 6</button></span>
-            <span class="botoesSom" data-som="sound7.mp4"><img title="Spiderman: Venom" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 7</button></span>
-            <span class="botoesSom" data-som="sound8.mp4"><img title="WhatsApp" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 8</button></span>
-        </section>
-        <section class="sons">
-            <span class="botoesSom" data-som="sound9.mp4"><img title="Cano caindo" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 9</button></span>
-            <span class="botoesSom" data-som="sound10.mp4"><img title="Ahh uiuiui" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 10</button></span>
-            <span class="botoesSom" data-som="sound11.mp4"><img title="Harrial" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 11</button></span>
-            <span class="botoesSom" data-som="sound12.mp4"><img title="Poinoinoin" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 12</button></span>
-        </section>
-        <section class="sons">
-            <span class="botoesSom" data-som="sound13.mp4"><img title="Honhonhoin" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 13</button></span>
-        </section>
+            <div class="container-fluid" id="configuraSom" style="display: none;">
+                <h3>Escolha o som ao jogar os dados</h3>
+                <section class="sons row">
+                    <span class="botoesSom col-sm" data-som="sound1.mp4"><img title="Pumm" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 1</button></span>
+                    <span class="botoesSom col-sm" data-som="sound2.mp4"><img title="Tarann" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 2</button></span>
+                    <span class="botoesSom col-sm" data-som="sound3.mp4"><img title="TuamTan🎵" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 3</button></span>
+                    <span class="botoesSom col-sm" data-som="sound4.mp4"><img title="Ahhhh!" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 4</button></span>
+                </section>
+                <section class="sons row">
+                    <span class="botoesSom col-sm" data-som="sound5.mp4"><img title="Spiderman: Miguel'Ohara" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 5</button></span>
+                    <span class="botoesSom col-sm" data-som="sound6.mp4"><img title="Spiderman: Gatuno" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 6</button></span>
+                    <span class="botoesSom col-sm" data-som="sound7.mp4"><img title="Spiderman: Venom" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 7</button></span>
+                    <span class="botoesSom col-sm" data-som="sound8.mp4"><img title="WhatsApp" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 8</button></span>
+                </section>
+                <section class="sons row">
+                    <span class="botoesSom col-sm" data-som="sound9.mp4"><img title="Cano caindo" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 9</button></span>
+                    <span class="botoesSom col-sm" data-som="sound10.mp4"><img title="Ahh uiuiui" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 10</button></span>
+                    <span class="botoesSom col-sm" data-som="sound11.mp4"><img title="Harrial" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 11</button></span>
+                    <span class="botoesSom col-sm" data-som="sound12.mp4"><img title="Poinoinoin" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 12</button></span>
+                </section>
+                <section class="sons row">
+                    <span class="botoesSom col-sm" data-som="sound13.mp4"><img title="Honhonhoin" class="imageSound" src="img/som.png"><button type="button" class="btn btn-primary definirSom">Som 13</button></span>
+                </section>
 
-        
-        <br><button type="button" class="btn btn-primary botoesSom definirSom">Nenhum</button>
-        <div id="tocarOSom"></div>
+                
+                <br><button type="button" class="btn btn-primary botoesSom definirSom">Nenhum</button>
+                <div id="tocarOSom"></div>
 
-        <br><button type="button" class="btn btn-warning voltarSom">Voltar</button>
+                <br><button type="button" class="btn btn-warning voltarSom">Voltar</button>
+            </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+        <script src="js/rolarDado.js"></script>
     </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <script src="js/rolarDado.js"></script>
 </body>
 </html>
