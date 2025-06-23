@@ -34,7 +34,7 @@ document.querySelector('.btnAddDado').addEventListener('click', () => {
     document.getElementById("legenda").style.display = "";
 
     count++;
-})
+});
 
 document.querySelector('.btnLimparTela').addEventListener('click', () => {
     document.getElementById('rolagens').innerHTML = '';
@@ -43,7 +43,7 @@ document.querySelector('.btnLimparTela').addEventListener('click', () => {
     allArrays.length = 0;
     somaAllArrays = 0;
     document.getElementById("somaAllDados").style.display = "none";
-})
+});
 
 document.querySelector(".btnTemaEscuro").addEventListener('click', () => {
     const mudarTema = document.body.classList;
@@ -58,4 +58,23 @@ document.querySelector(".btnTemaEscuro").addEventListener('click', () => {
             img.src = "img/som.png";
         })
     }
-})
+});
+
+document.querySelector(".configurarSom").addEventListener("click", () => {
+    document.getElementById("body").style.display = "none";
+    document.getElementById("configuraSom").style.display = "";
+});
+document.querySelector(".voltarSom").addEventListener("click", () => {
+    document.getElementById("body").style.display = "";
+    document.getElementById("configuraSom").style.display = "none";
+});
+
+document.querySelectorAll(".botoesSom").forEach(item => {
+    item.addEventListener("click", () => {
+        const nomeSom = item.dataset.som;
+        document.getElementById("tocarOSom").innerHTML = `<audio id="audio" src="sons/${nomeSom}" autoplay></audio>`;
+        document.querySelectorAll(".definirSom").forEach(i => {
+            document.getElementById("tocarOSomDado").innerHTML = `<audio id="audioDado" src="sons/${nomeSom}"></audio>`;
+        })
+    });
+});
