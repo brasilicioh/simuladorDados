@@ -1,10 +1,12 @@
 import { toggleTheme } from "./core/darkMode.js";
 import { clearScreen, criarNovoDado } from "./core/html.js";
-import { rolarDados } from "./core/rolarDado.js"
+import { rolarDados } from "./core/rolarDado.js";
 
-export const allArrays = [];
-export var count = 0;
-export var somaAllArrays = 0;
+export const state = {
+    allArrays: [],
+    count: 0,
+    somaAllArrays: 0
+}
 
 const adicionarDado = document.querySelector('.btnAddDado');
 adicionarDado.addEventListener('click', () => {
@@ -49,5 +51,8 @@ botoesDeSom.forEach(element => {
 });
 
 document.getElementById("rolagens").addEventListener("click", (element) => {
-    rolarDados(element.target.closest(".rolarDados").dataset.id);
+    const btn = element.target.closest(".rolarDados");
+    if (btn) {
+        rolarDados(btn.dataset.id);
+    }
 })
