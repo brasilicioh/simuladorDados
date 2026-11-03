@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./Button";
+import { playSelectedSound } from "./SoundSelector";
 
 interface Props {
   onRemove: () => void;
@@ -41,6 +42,7 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
       sum += roll;
     }
     onRoll(results, sum);
+    playSelectedSound();
   }
 
   return (
