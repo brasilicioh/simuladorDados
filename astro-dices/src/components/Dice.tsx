@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "./Button";
 
 interface Props {
@@ -16,11 +16,23 @@ export interface DiceData {
 export default function Dice({ onRemove, dice, onRoll }: Props) {
   const [sides, setSides] = useState<string>("6");
   const [quantity, setQuantity] = useState<string>("1");
+  const [error, setError] = useState("");
 
   function handleRoll() {
     const sidesNumber = Number(sides);
     const quantityNumber = Number(quantity);
 
+    if (
+      !Number.isInteger(sidesNumber) ||
+      sidesNumber < 2 ||
+      !Number.isInteger(quantityNumber) ||
+      quantityNumber < 1
+    ) {
+      setError("Informe lados (mínimo 2) e quantidade (mínimo 1).");
+      return;
+    }
+
+    setError("");
     const results: number[] = [];
     let sum = 0;
     for (let i = 0; i < quantityNumber; i++) {
@@ -31,26 +43,8 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
     onRoll(results, sum);
   }
 
-  useEffect(() => {
-    if (
-      isNaN(Number(sides)) ||
-      Number(sides) < 0 ||
-      !Number.isInteger(Number(sides))
-    ) {
-      setSides("");
-    }
-
-    if (
-      isNaN(Number(quantity)) ||
-      Number(quantity) < 0 ||
-      !Number.isInteger(Number(quantity))
-    ) {
-      setQuantity("");
-    }
-  }, [sides, quantity]);
-
   return (
-    <div className="w-full max-w-lg rounded-2xl border border-stone-200 bg-white p-4 text-stone-800 white:border-stone-700 white:bg-stone-950 white:text-stone-100">
+    <div className="w-full max-w-lg rounded-2xl border white:border-stone-200 white:bg-white p-4 white:text-stone-800 border-stone-700 bg-stone-950 text-stone-100">
       <div className="flex items-center justify-between border-b border-stone-200 pb-3 white:border-stone-700">
         <h2 className="text-base font-semibold">Configurar dado</h2>
         <button
@@ -59,7 +53,7 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
           onClick={onRemove}
           className="flex h-8 w-8 justify-center text-xl transition text-stone-500 hover:text-red-600 white:text-stone-400 white:hover:text-red-300"
         >
-          ×
+          X
         </button>
       </div>
 
@@ -67,11 +61,11 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
         <label className="flex flex-col gap-1 text-sm font-medium">
           <span>Lados do dado</span>
           <input
-            type="text"
-            id="side-input"
+            type="number"
+            id={`sides-${dice.id}`}
             min="1"
             step="1"
-            className="w-full rounded-lg border border-stone-300 bg-stone-50 px-3 py-2 text-center text-base text-stone-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 white:border-stone-600 white:bg-stone-900 white:text-white"
+            className="w-full rounded-lg border white:border-stone-300 white:bg-stone-50 px-3 py-2 text-center text-base white:text-stone-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 border-stone-600 bg-stone-900 text-white"
             value={sides}
             onChange={(e) => setSides(e.target.value)}
           />
@@ -80,11 +74,11 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
         <label className="flex flex-col gap-1 text-sm font-medium">
           <span>Quantidade</span>
           <input
-            type="text"
-            id="side-input"
+            type="number"
+            id={`quantity-${dice.id}`}
             min="1"
             step="1"
-            className="w-full rounded-lg border border-stone-300 bg-stone-50 px-3 py-2 text-center text-base text-stone-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 white:border-stone-600 white:bg-stone-900 white:text-white"
+            className="w-full rounded-lg border white:border-stone-300 white:bg-stone-50 px-3 py-2 text-center text-base white:text-stone-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 border-stone-600 bg-stone-900 text-white"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
           />
@@ -94,13 +88,14 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
       <div className="border-t border-stone-200 pt-3 white:border-stone-700">
         <Button
           text="Jogar Dado"
-          action="rollDice"
-          onClick={handleRoll}
           bgColor="bg-blue-600"
           bgHoverColor="hover:bg-blue-700"
           size="w-full py-2.5"
+          onClick={handleRoll}
         />
       </div>
+
+      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
       {dice.results.length > 0 && (
         <div className="mt-4">

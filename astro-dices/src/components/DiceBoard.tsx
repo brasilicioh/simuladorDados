@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Dice, { type DiceData } from "./Dice";
 
 export default function DiceBoard() {
   const [dice, setDice] = useState<DiceData[]>([]);
-  const [totalSum, setTotalSum] = useState(0);
   const nextDiceId = useRef(0);
+  const totalSum = useMemo(
+    () => dice.reduce((total, currentDice) => total + currentDice.sum, 0),
+    [dice],
+  );
 
   const removeDiceById = (id: number) => {
     setDice((currentDice) =>
@@ -46,14 +49,6 @@ export default function DiceBoard() {
       window.removeEventListener("remove-all-dice", removeAllDice);
     };
   }, []);
-
-  useEffect(() => {
-    let totalSum = 0;
-    dice.forEach((currentDice) => {
-      if (currentDice.sum != 0) totalSum += currentDice.sum;
-    });
-    setTotalSum(totalSum);
-  }, [dice]);
 
   return (
     <div className="mt-6 flex flex-col items-center gap-4">
