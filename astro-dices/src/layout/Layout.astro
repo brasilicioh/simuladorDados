@@ -1,0 +1,20 @@
+---
+import favicon from "../assets/favicon.ico";
+import "../styles/style.css";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Rolar dados" />
+    <link rel="icon" href={favicon} type="image/x-icon" />
+    <title>Rolar Dados 🎲</title>
+  </head>
+  <body
+    class="min-h-screen p-4 bg-stone-900 text-white white:bg-stone-300 white:text-black"
+  >
+    <slot />
+  </body>
+</html>

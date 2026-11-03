@@ -1,0 +1,20 @@
+---
+import HeaderButtons from "./HeaderButtons.astro";
+
+const { withText = true } = Astro.props;
+---
+
+<HeaderButtons />
+{
+  withText && (
+    <div class="flex flex-col items-center my-7">
+      <h2 class="text-5xl font-bold mb-5">Girar Dados</h2>
+      <h4 class="text-2xl">
+        Os resultados são números aleatórios entre 1 e o número de Lados do Dado
+      </h4>
+      <h4 class="text-2xl">
+        Ele joga o dado pela Qtd escolhida e soma os resultados
+      </h4>
+    </div>
+  )
+}
