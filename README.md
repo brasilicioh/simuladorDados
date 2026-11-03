@@ -5,15 +5,14 @@ soma dos resultados.
 
 ## Executar a aplicação atual
 
-A versão mantida e organizada está em `astro-dices/`:
+A aplicação Astro está na raiz do repositório:
 
 ```sh
-cd astro-dices
 npm install
 npm run dev
 ```
 
 Depois, abra `http://localhost:4321/`.
 
-> O `index.html` na raiz e as pastas `js/`, `css/` e `sons/` pertencem à
-> versão legada. Abrir esse HTML diretamente não executa a aplicação Astro.
+> O diretório `antigo/` contém a versão legada. Abrir o HTML diretamente não
+> executa a aplicação Astro.

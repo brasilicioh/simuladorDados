@@ -7,6 +7,7 @@ export default function HeaderButtons() {
 
   function changeTheme() {
     document.body.classList.toggle("white");
+    window.dispatchEvent(new Event("theme-changed"));
   }
 
   function openSoundPage() {

@@ -65,7 +65,7 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
           <input
             type="number"
             id={`sides-${dice.id}`}
-            min="1"
+            min="2"
             step="1"
             className="w-full rounded-lg border white:border-stone-300 white:bg-stone-50 px-3 py-2 text-center text-base white:text-stone-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 border-stone-600 bg-stone-900 text-white"
             value={sides}

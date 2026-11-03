@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import audioIcon from "../assets/audio.png";
 import whiteAudioIcon from "../assets/whiteAudio.png";
 import sound1 from "../assets/audio/sound1.mp4";
@@ -34,16 +34,25 @@ const sounds = [
 const SOUND_KEY = "selected-dice-sound";
 
 export default function SoundSelector() {
-  const [selectedSound, setSelectedSound] = useState(
+  const [selectedSound, setSelectedSound] = useState(() =>
+    typeof window === "undefined"
+      ? ""
+      : (localStorage.getItem(SOUND_KEY) ?? ""),
+  );
+  const [isLightTheme, setIsLightTheme] = useState(
     () =>
-      typeof window === "undefined"
-        ? ""
-        : localStorage.getItem(SOUND_KEY) ?? "",
+      typeof document !== "undefined" &&
+      document.body.classList.contains("white"),
   );
-  const [isLightTheme, setIsLightTheme] = useState(() =>
-    typeof document !== "undefined" &&
-    document.body.classList.contains("white"),
-  );
+
+  useEffect(() => {
+    const updateTheme = () => {
+      setIsLightTheme(document.body.classList.contains("white"));
+    };
+
+    window.addEventListener("theme-changed", updateTheme);
+    return () => window.removeEventListener("theme-changed", updateTheme);
+  }, []);
 
   function selectSound(sound: string) {
     localStorage.setItem(SOUND_KEY, sound);
@@ -56,19 +65,22 @@ export default function SoundSelector() {
 
   return (
     <main className="mx-auto max-w-3xl">
-      <h2 className="mb-5 text-2xl font-bold">Escolha o som ao jogar os dados</h2>
+      <h2 className="mb-5 text-2xl font-bold">
+        Escolha o som ao jogar os dados
+      </h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {sounds.map(([label, title, source]) => (
           <button
+            key={source}
             type="button"
             title={title}
             className={`flex items-center justify-center gap-2 rounded px-3 py-2 ${
-              selectedSound === source ? "bg-blue-700" : "bg-blue-500"
-            } text-white`}
+              selectedSound === source ? "bg-blue-800" : "bg-blue-500"
+            } hover:bg-blue-700 text-white`}
             onClick={() => selectSound(source)}
           >
             <img
-              src={isLightTheme ? whiteAudioIcon : audioIcon}
+              src={isLightTheme ? audioIcon : whiteAudioIcon}
               alt=""
               title={title}
               className="h-5 w-5"

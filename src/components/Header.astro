@@ -1,10 +1,10 @@
 ---
-import HeaderButtons from "./HeaderButtons.astro";
+import HeaderButtons from "./HeaderButtons";
 
 const { withText = true } = Astro.props;
 ---
 
-<HeaderButtons />
+<HeaderButtons client:load />
 {
   withText && (
     <div class="flex flex-col items-center my-7">
