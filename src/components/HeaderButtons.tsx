@@ -13,7 +13,8 @@ export default function HeaderButtons() {
   }
 
   function openSoundPage() {
-    void navigate(`${import.meta.env.BASE_URL}audio`);
+    const url_sound = import.meta.env.BASE_URL;
+    void navigate(url_sound[url_sound.length - 1] === "/" ? "audio" : "/audio");
   }
 
   return (
