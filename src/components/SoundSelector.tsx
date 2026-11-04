@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import audioIcon from "../assets/audio.png";
-import whiteAudioIcon from "../assets/whiteAudio.png";
+import audioIcon from "../assets/whiteAudio.png";
 import sound1 from "../assets/audio/sound1.mp4";
 import sound2 from "../assets/audio/sound2.mp4";
 import sound3 from "../assets/audio/sound3.mp4";
@@ -34,24 +33,10 @@ const sounds = [
 const SOUND_KEY = "selected-dice-sound";
 
 export default function SoundSelector() {
-  const [selectedSound, setSelectedSound] = useState(() =>
-    typeof window === "undefined"
-      ? ""
-      : (localStorage.getItem(SOUND_KEY) ?? ""),
-  );
-  const [isLightTheme, setIsLightTheme] = useState(
-    () =>
-      typeof document !== "undefined" &&
-      document.body.classList.contains("white"),
-  );
+  const [selectedSound, setSelectedSound] = useState("");
 
   useEffect(() => {
-    const updateTheme = () => {
-      setIsLightTheme(document.body.classList.contains("white"));
-    };
-
-    window.addEventListener("theme-changed", updateTheme);
-    return () => window.removeEventListener("theme-changed", updateTheme);
+    setSelectedSound(localStorage.getItem(SOUND_KEY) ?? "");
   }, []);
 
   function selectSound(sound: string) {
@@ -79,12 +64,7 @@ export default function SoundSelector() {
             } hover:bg-blue-700 text-white`}
             onClick={() => selectSound(source)}
           >
-            <img
-              src={isLightTheme ? audioIcon : whiteAudioIcon}
-              alt=""
-              title={title}
-              className="h-5 w-5"
-            />
+            <img src={audioIcon.src} alt="" title={title} className="h-5 w-5" />
             {label}
           </button>
         ))}
