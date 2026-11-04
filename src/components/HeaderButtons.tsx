@@ -13,7 +13,7 @@ export default function HeaderButtons() {
   }
 
   function openSoundPage() {
-    void navigate("/audio");
+    void navigate(`${import.meta.env.BASE_URL}audio`);
   }
 
   return (

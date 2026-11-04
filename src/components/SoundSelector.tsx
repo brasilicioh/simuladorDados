@@ -46,7 +46,7 @@ export default function SoundSelector() {
   }
 
   function goBack() {
-    void navigate("/");
+    void navigate(import.meta.env.BASE_URL);
   }
 
   return (
