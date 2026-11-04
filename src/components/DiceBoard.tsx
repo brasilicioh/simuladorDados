@@ -1,55 +1,32 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import Dice, { type DiceData } from "./Dice";
+import { useEffect, useMemo, useSyncExternalStore } from "react";
+import Dice from "./Dice";
+import {
+  addDice,
+  getDice,
+  removeAllDice,
+  removeDiceById,
+  subscribe,
+  updateDiceResults,
+} from "../store/diceStore";
 
 export default function DiceBoard() {
-  const [dice, setDice] = useState<DiceData[]>([]);
-  const nextDiceId = useRef(0);
+  const dice = useSyncExternalStore(subscribe, getDice, getDice);
   const totalSum = useMemo(
     () => dice.reduce((total, currentDice) => total + currentDice.sum, 0),
     [dice],
   );
 
-  const removeDiceById = (id: number) => {
-    setDice((currentDice) =>
-      currentDice.filter((CurrentDice) => CurrentDice.id !== id),
-    );
-  };
-
-  const addDice = () => {
-    setDice((currentDice) => [
-      ...currentDice,
-      { id: nextDiceId.current++, results: [], sum: 0 },
-    ]);
-  };
-
-  const updateDiceResults = (id: number, results: number[], sum: number) => {
-    setDice((currentDice) =>
-      currentDice.map((CurrentDice) =>
-        CurrentDice.id === id ? { ...CurrentDice, results, sum } : CurrentDice,
-      ),
-    );
-  };
-
-  const removeDice = () => {
-    setDice((currentDice) => currentDice.slice(0, -1));
-  };
-
-  const removeAllDice = () => {
-    setDice([]);
-  };
-
   useEffect(() => {
     window.addEventListener("add-dice", addDice);
-    window.addEventListener("remove-dice", removeDice);
     window.addEventListener("remove-all-dice", removeAllDice);
-
     return () => {
       window.removeEventListener("add-dice", addDice);
-      window.removeEventListener("remove-dice", removeDice);
       window.removeEventListener("remove-all-dice", removeAllDice);
     };
   }, []);
 
+  // TODO: mover sides, quantity e error do estado local de Dice.tsx para o
+  // store caso a configuração de cada dado também precise sobreviver à rota.
   return (
     <div className="mt-6 flex flex-col items-center gap-4">
       {dice.map((CurrentDice) => (

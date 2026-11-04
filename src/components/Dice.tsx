@@ -1,6 +1,6 @@
-import { useState } from "react";
 import Button from "./Button";
 import { playSelectedSound } from "./SoundSelector";
+import { updateDiceConfig } from "../store/diceStore";
 
 interface Props {
   onRemove: () => void;
@@ -10,18 +10,17 @@ interface Props {
 
 export interface DiceData {
   id: number;
+  sides: string;
+  quantity: string;
+  error: string;
   results: number[];
   sum: number;
 }
 
 export default function Dice({ onRemove, dice, onRoll }: Props) {
-  const [sides, setSides] = useState<string>("6");
-  const [quantity, setQuantity] = useState<string>("1");
-  const [error, setError] = useState("");
-
   function handleRoll() {
-    const sidesNumber = Number(sides);
-    const quantityNumber = Number(quantity);
+    const sidesNumber = Number(dice.sides);
+    const quantityNumber = Number(dice.quantity);
 
     if (
       !Number.isInteger(sidesNumber) ||
@@ -29,11 +28,13 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
       !Number.isInteger(quantityNumber) ||
       quantityNumber < 1
     ) {
-      setError("Informe lados (mínimo 2) e quantidade (mínimo 1).");
+      updateDiceConfig(dice.id, {
+        error: "Informe lados (mínimo 2) e quantidade (mínimo 1).",
+      });
       return;
     }
 
-    setError("");
+    updateDiceConfig(dice.id, { error: "" });
     const results: number[] = [];
     let sum = 0;
     for (let i = 0; i < quantityNumber; i++) {
@@ -68,8 +69,10 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
             min="2"
             step="1"
             className="w-full rounded-lg border white:border-stone-300 white:bg-stone-50 px-3 py-2 text-center text-base white:text-stone-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 border-stone-600 bg-stone-900 text-white"
-            value={sides}
-            onChange={(e) => setSides(e.target.value)}
+            value={dice.sides}
+            onChange={(e) =>
+              updateDiceConfig(dice.id, { sides: e.target.value })
+            }
           />
         </label>
 
@@ -81,8 +84,10 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
             min="1"
             step="1"
             className="w-full rounded-lg border white:border-stone-300 white:bg-stone-50 px-3 py-2 text-center text-base white:text-stone-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 border-stone-600 bg-stone-900 text-white"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
+            value={dice.quantity}
+            onChange={(e) =>
+              updateDiceConfig(dice.id, { quantity: e.target.value })
+            }
           />
         </label>
       </div>
@@ -97,7 +102,7 @@ export default function Dice({ onRemove, dice, onRoll }: Props) {
         />
       </div>
 
-      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+      {dice.error && <p className="mt-3 text-sm text-red-600">{dice.error}</p>}
 
       {dice.results.length > 0 && (
         <div className="mt-4">

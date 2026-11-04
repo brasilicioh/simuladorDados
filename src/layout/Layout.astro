@@ -1,6 +1,7 @@
 ---
 import favicon from "../assets/favicon.ico";
 import "../styles/style.css";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -11,6 +12,7 @@ import "../styles/style.css";
     <meta name="description" content="Rolar dados" />
     <link rel="icon" href={favicon} type="image/x-icon" />
     <title>Rolar Dados 🎲</title>
+    <ClientRouter />
   </head>
   <body
     class="min-h-screen p-4 bg-stone-900 text-white white:bg-stone-300 white:text-black"

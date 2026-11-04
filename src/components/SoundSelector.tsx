@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { navigate } from "astro:transitions/client";
 import audioIcon from "../assets/whiteAudio.png";
 import sound1 from "../assets/audio/sound1.mp4";
 import sound2 from "../assets/audio/sound2.mp4";
@@ -45,7 +46,7 @@ export default function SoundSelector() {
   }
 
   function goBack() {
-    window.location.href = "/";
+    void navigate("/");
   }
 
   return (

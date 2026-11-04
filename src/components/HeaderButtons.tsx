@@ -1,4 +1,5 @@
 import Button from "./Button";
+import { navigate } from "astro:transitions/client";
 
 export default function HeaderButtons() {
   function removeDices() {
@@ -11,7 +12,7 @@ export default function HeaderButtons() {
   }
 
   function openSoundPage() {
-    window.location.href = "/audio";
+    void navigate("/audio");
   }
 
   return (
