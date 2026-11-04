@@ -20,3 +20,10 @@ import { ClientRouter } from "astro:transitions";
     <slot />
   </body>
 </html>
+
+<script>
+  import { applyTheme } from "../store/themeStore";
+
+  applyTheme();
+  document.addEventListener("astro:after-swap", applyTheme);
+</script>

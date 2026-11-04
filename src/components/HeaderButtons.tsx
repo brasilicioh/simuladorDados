@@ -1,5 +1,6 @@
 import Button from "./Button";
 import { navigate } from "astro:transitions/client";
+import { toggleTheme } from "../store/themeStore";
 
 export default function HeaderButtons() {
   function removeDices() {
@@ -7,7 +8,7 @@ export default function HeaderButtons() {
   }
 
   function changeTheme() {
-    document.body.classList.toggle("white");
+    toggleTheme();
     window.dispatchEvent(new Event("theme-changed"));
   }
 
