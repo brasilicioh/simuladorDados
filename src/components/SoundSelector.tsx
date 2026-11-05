@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
 import { navigate } from "astro:transitions/client";
+import { useEffect, useState } from "react";
+
+import Button from "./Button";
+
 import audioIcon from "../assets/whiteAudio.png";
 import sound1 from "../assets/audio/sound1.mp4";
 import sound2 from "../assets/audio/sound2.mp4";
@@ -50,50 +53,60 @@ export default function SoundSelector() {
   }
 
   return (
-    <main className="mx-auto max-w-3xl">
-      <h2 className="mb-5 text-2xl font-bold">
+    <main className="mx-auto flex w-full flex-col items-center gap-5">
+      <h2 className="text-center text-2xl font-bold">
         Escolha o som ao jogar os dados
       </h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {sounds.map(([label, title, source]) => (
-          <button
+          <Button
             key={source}
-            type="button"
+            text={label}
+            bgColor="bg-blue-500"
+            bgHoverColor="hover:bg-blue-700"
+            size="w-40 px-3 py-2"
+            onClick={() => {
+              selectSound(source);
+              playSelectedSound();
+            }}
+            className={
+              (selectedSound === source ? "bg-blue-800" : "") +
+              " flex items-center justify-center gap-2"
+            }
             title={title}
-            className={`flex items-center justify-center gap-2 rounded px-3 py-2 ${
-              selectedSound === source ? "bg-blue-800" : "bg-blue-500"
-            } hover:bg-blue-700 text-white`}
-            onClick={() => selectSound(source)}
           >
-            <img src={audioIcon.src} alt="" title={title} className="h-5 w-5" />
-            {label}
-          </button>
+            <img src={audioIcon.src} alt="" className="h-5 w-5" />
+          </Button>
         ))}
       </div>
-      <div className="mt-4 flex gap-3">
-        <button
-          type="button"
-          title="Não tocar nenhum som"
-          className="rounded bg-stone-500 px-3 py-2 text-white"
+      <div className="flex flex-wrap justify-center gap-3">
+        <Button
+          text="Nenhum Som"
+          bgColor="bg-stone-500"
+          bgHoverColor="hover:bg-stone-700"
+          size="px-3 py-2"
           onClick={() => selectSound("")}
-        >
-          Nenhum som
-        </button>
-        <button
-          type="button"
+          title="Não tocar nenhum som"
+        />
+        <Button
+          text="Som Aleatório"
+          bgColor="bg-blue-500"
+          bgHoverColor="hover:bg-blue-700"
+          size="px-3 py-2"
+          onClick={() => {
+            selectSound("random");
+            playSelectedSound();
+          }}
           title="Escolher um som aleatório a cada rolagem"
-          className="rounded bg-blue-500 px-3 py-2 text-white"
-          onClick={() => selectSound("random")}
-        >
-          Som aleatório
-        </button>
-        <button
-          type="button"
-          className="rounded bg-amber-500 px-3 py-2 text-black"
+        />
+        <Button
+          text="Voltar"
+          bgColor="bg-amber-500"
+          bgHoverColor="hover:bg-amber-700"
+          size="px-3 py-2"
           onClick={goBack}
-        >
-          Voltar
-        </button>
+          className="text-black"
+        />
       </div>
     </main>
   );

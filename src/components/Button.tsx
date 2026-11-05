@@ -1,9 +1,15 @@
-interface Props {
-  text: string;
+import type { ButtonHTMLAttributes, ReactNode } from "react";
+
+interface Props extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "children" | "className" | "type"
+> {
+  text?: string;
+  children?: ReactNode;
   bgColor?: string;
   bgHoverColor?: string;
   size?: string;
-  onClick?: () => void;
+  className?: string;
 }
 
 export default function Button({
@@ -11,16 +17,15 @@ export default function Button({
   bgColor = "bg-gray-500",
   bgHoverColor = "hover:bg-gray-700",
   size = "basis-1/4 py-2",
-  onClick,
+  className,
+  children,
+  ...buttonProps
 }: Props) {
-  const style = `${bgColor} ${bgHoverColor} text-white rounded cursor-pointer ${size} transition duration-300`;
-
-  function handleClick() {
-    onClick?.();
-  }
+  const style = `${bgColor} ${bgHoverColor} text-white rounded cursor-pointer ${size} transition duration-300 ${className ?? ""}`;
 
   return (
-    <button type="button" className={style} onClick={handleClick}>
+    <button type="button" className={style} {...buttonProps}>
+      {children}
       {text}
     </button>
   );
